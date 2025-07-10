@@ -1,0 +1,6 @@
+
+To create a new file you can use open() function. 
+
+In the arguments, mention the file name as the first argument and 'x' as second. 
+
+This returns an error if the file already exists. 
