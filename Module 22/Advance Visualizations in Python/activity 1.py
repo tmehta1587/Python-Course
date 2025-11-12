@@ -1,23 +1,62 @@
 
 import pandas as pd
+
 import seaborn as sns
+
+import matplotlib.pyplot as plt
+
 sns.set(color_codes=True)
 
+# Load the CSV
+
 weather = pd.read_csv(r"C:\Users\Tinashe Mehta\New folder\Python Course\Module 22\Advance Visualizations in Python\weather.csv")
+
+# Preview data
+
 print(weather.head())
 
 print(weather.info())
 
-print(sns.barplot(weather['humidity'], weather['temperature']))
+# Bar plot
 
-print(sns.distplot(weather['humidity']))
+sns.barplot(x='humidity', y='temperature', data=weather)
 
-print(sns.distplot(weather['humidity'], kde=False, rug=True))
+plt.title("Barplot of Humidity vs Temperature")
 
-print(sns.jointplot(weather['humidity'], weather['temperature']))
+plt.show()
 
-print(sns.jointplot(weather['humidity'], weather['temperature']))
+# Distribution plot (replaces deprecated distplot)
 
-print(sns.jointplot(weather['humidity'], weather['temperature'], kind="hex"))
+sns.histplot(weather['humidity'], kde=True)
 
-print(sns.jointplot(weather['humidity'], weather['temperature'], kind="kde"))
+plt.title("Distribution of Humidity")
+
+plt.show()
+
+# Histogram without KDE, with rug
+
+sns.histplot(weather['humidity'], kde=False)
+
+sns.rugplot(weather['humidity'])
+
+plt.title("Histogram with Rug Plot (Humidity)")
+
+plt.show()
+
+# Joint plot (scatter + hist)
+
+sns.jointplot(x='humidity', y='temperature', data=weather)
+
+plt.show()
+
+# Joint plot (hex)
+
+sns.jointplot(x='humidity', y='temperature', data=weather, kind='hex')
+
+plt.show()
+
+# Joint plot (kde)
+
+sns.jointplot(x='humidity', y='temperature', data=weather, kind='kde')
+
+plt.show()
